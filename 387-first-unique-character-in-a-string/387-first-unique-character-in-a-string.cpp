@@ -1,18 +1,16 @@
 class Solution {
 public:
-    int firstUniqChar(string s) {
-        
-        unordered_map<char,int> ump(26);
-        for(int i=0; i<s.size(); i++){
-            ump[s[i]]++;
+char repeatedCharacter(string s) {
+
+	char c;
+   unordered_map<char,int> m;
+    for(int i=0;i<s.size();i++){
+        m[s[i]]++;
+         if(m[s[i]]==2){
+            c= s[i];
+            break;
         }
-           
-        
-         for(int i=0; i<s.size(); i++){
-           if(ump[s[i]]==1) return i;
-        }
-         
-        
-        return -1;
     }
+    return c;
+}
 };
