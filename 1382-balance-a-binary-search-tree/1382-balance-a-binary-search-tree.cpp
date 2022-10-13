@@ -22,19 +22,18 @@ public:
         inorder(root->left);
         a.push_back(root->val);
         inorder(root->right);
-        
     }
     
-    TreeNode* buildBST(int l , int r){
-        if(l > r){
+    TreeNode* helper(int l , int r){
+        if(l>r){
             return NULL;
         }
         
         int mid = (l+r)/2;
         
         TreeNode* root = new TreeNode(a[mid]);
-        root->left = buildBST(l , mid-1);
-        root->right = buildBST(mid+1 , r);
+        root->left = helper(l , mid-1);
+        root->right = helper(mid+1 , r);
         
         return root;
     }
@@ -42,6 +41,6 @@ public:
     TreeNode* balanceBST(TreeNode* root) {
         inorder(root);
         
-        return buildBST(0 , a.size()-1);
+        return helper(0 , a.size()-1);
     }
 };
